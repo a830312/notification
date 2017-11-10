@@ -1,4 +1,4 @@
-# Send notification with push bullet
+# Notification
 
 ## How to use
 
