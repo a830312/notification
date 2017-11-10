@@ -1,4 +1,4 @@
-var moment = require('moment')
+const moment = require('moment')
 var records = []
 
 
@@ -22,7 +22,7 @@ const findById = function(id, cb) {
 const updateUser = function(username, cb) {
   process.nextTick(function() {
     findByUsername(username, function(err, user) {
-      let numOfNotificationsPushed = user.numOfNotificationsPushed + 1
+      let numOfNotificationsPushed = user.numOfNotificationsPushed + 1,
           idx = user.id,
           newRecord = Object.assign({}, user, { numOfNotificationsPushed })
       records[idx] = newRecord
@@ -38,22 +38,18 @@ const findByUsername = function(username, cb) {
   })
 }
 
-const addRecord = function({username, accessToken}, cb) {
+const addUser = function({username, accessToken}, cb) {
   process.nextTick(function() {
-    let record = {
+    let user = {
       id: records.length,
       username,
       accessToken,
       creationTime: moment().format('YYYY-MM-DDTkk:mm:ss'),
       numOfNotificationsPushed: 0
     }
-    records.push(record)
-    cb(null, record)
+    records.push(user)
+    cb(null, user)
   })
 }
 
-exports.findById = findById
-exports.getUsers = getUsers
-exports.updateUser = updateUser
-exports.findByUsername = findByUsername
-exports.addRecord = addRecord
+export default { findById, getUsers, updateUser, findByUsername, addUser }

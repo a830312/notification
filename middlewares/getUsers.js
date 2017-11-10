@@ -1,5 +1,4 @@
-var data = require('../data')
-
+import data from '../data'
 
 const getUsers = function (req, res, next) {
   data.users.getUsers(function(users) {
@@ -8,4 +7,4 @@ const getUsers = function (req, res, next) {
   })
 }
 
-module.exports = getUsers
+export default getUsers

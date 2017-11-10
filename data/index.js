@@ -1,1 +1,5 @@
-exports.users = require('./users')
+import users from './users'
+
+export default {
+  users
+}
