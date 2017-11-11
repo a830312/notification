@@ -8,32 +8,41 @@ export default class Form extends Component {
   constructor(props) {
     super(props)
     this._onSubmit = this._onSubmit.bind(this)
-    //this._onInputChange = this._onInputChange.bind(this)
+    this._onInputChange = this._onInputChange.bind(this)
   }
 
   _onSubmit(e) {
     e.preventDefault()
-    let { onFormSubmit } = this.props,
-        { username, accesstoken } = e.target
+    let { onFormSubmit } = this.props
 
     if (_isFunction(onFormSubmit))
-      onFormSubmit({
-        username: username.value,
-        accesstoken: accesstoken.value
-      })
+      onFormSubmit()
 
   }
 
+  _onInputChange(e) {
+    e.preventDefault()
+    let { name, value } = e.target,
+      { onInputChange } = this.props
+
+    if (_isFunction(onInputChange))
+      onInputChange({
+        name: name,
+        value: value
+      })
+  }
+
   render() {
-    let { inputs, action, method, submit } = this.props
+    let { formName, inputs, action, method, submit } = this.props
 
     return (
-      <form action={action} method={method} onSubmit={ this._onSubmit }>
+      <form action={action} method={method} onSubmit={ this._onSubmit } name={formName} >
         {
           inputs.map((input, i) => (
             <div className="form-group" key={`${input.name}-${i}`}>
-              <label>{ input.label }</label>
-              <input type={ input.type } className="form-control" name={ input.name } />
+              { input.label ? <label>{ input.label }</label> : false }
+              <input type={ input.type } className="form-control" name={ input.name } 
+                onChange={this._onInputChange} />
             </div>
           ))
         }
@@ -49,7 +58,8 @@ Form.propTypes = {
   action: PropTypes.string,
   method: PropTypes.string,
   submit: PropTypes.string,
-  //onInputChange: PropTypes.func.isRequired,
+  formName: PropTypes.string,
+  onInputChange: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired
 }
 

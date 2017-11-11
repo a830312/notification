@@ -3,6 +3,8 @@ import { actionTypes } from '../actions'
 import hasSignup from './hasSignup'
 import message from './message'
 import currentUser from './currentUser'
+import signupForm from './signupForm'
+import notificationForm from './notificationForm'
 import logger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
@@ -10,7 +12,9 @@ import thunkMiddleware from 'redux-thunk'
 const reducer = combineReducers({
   hasSignup,
   message,
-  currentUser
+  currentUser,
+  signupForm,
+  notificationForm
 })
 
 export const initStore = (initialState = {}) => {

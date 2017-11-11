@@ -1,5 +1,3 @@
-
-import Head from 'next/head'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
@@ -8,7 +6,7 @@ export default class User extends Component {
   render() {
     let { user } = this.props
 
-    return (
+    return user.username ? (
       <div>
         <p>current user:</p>
         <ul>
@@ -17,10 +15,14 @@ export default class User extends Component {
           }
         </ul>
       </div>
-    )
+    ) : false
   }
 }
 
 User.propTypes = {
-  currentUser: PropTypes.Object
+  user: PropTypes.object
+}
+
+User.defaultProps = {
+  user: {}
 }

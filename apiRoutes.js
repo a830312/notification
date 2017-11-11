@@ -3,6 +3,7 @@ import request from 'superagent'
 import getUsers from './middlewares/getUsers'
 import getUser from './middlewares/getUser'
 import data from './data'
+import { CREATE_NOTIFICATION } from './config/pushbullet'
 
 export default [
   {
@@ -11,6 +12,7 @@ export default [
     middleware: Passport.authenticate('local-signup'),
     callback: (req, res) => {
       let user = req.user || {}
+      // console.log('post /signup', req.isAuthenticated())
       res.json({ user })
     }
   },
@@ -29,6 +31,7 @@ export default [
     middleware: getUser,
     callback: (req, res) => {
       let user = req.user || {},
+      { title, body, type } = req.body,
       { accessToken, username } = user,
       status = 403
 
@@ -41,11 +44,11 @@ export default [
         })
       } else {
         request
-          .post('https://api.pushbullet.com/v2/pushes')
+          .post(CREATE_NOTIFICATION)
           .send({
-            'body': 'Space Elevator, Mars Hyperloop, Space Model S (Model Space?)',
-            'title': 'Space Travel Ideas',
-            'type': 'note'
+            body,
+            title,
+            type
           })
           .set('Content-Type', 'application/json')
           .set('Access-Token', accessToken)
@@ -60,7 +63,7 @@ export default [
               })
             } else {
               data.users.updateUser(username, (error, updatedUser) => {
-                res.json(updatedUser)
+                res.json({ user: updatedUser })
               })
             }
           })

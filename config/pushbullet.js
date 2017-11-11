@@ -1,0 +1,1 @@
+export const CREATE_NOTIFICATION = 'https://api.pushbullet.com/v2/pushes'
