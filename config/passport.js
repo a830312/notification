@@ -17,15 +17,15 @@ export default function (passport) {
 
   passport.use('local-signup', new LocalStrategy({
     usernameField: 'username',
-    passwordField: 'accessToken'
+    passwordField: 'accesstoken'
   },
-  function(username, accessToken, cb) {
+  function(username, accesstoken, cb) {
     data.users.findByUsername(username, function(err, user) {
       if (err) { return cb(err) }
       if (user) {
-        return cb(null, false, req.flash('signupMessage', 'That username is already taken.'))
+        return cb(null, false)
       }
-      data.users.addUser({username, accessToken}, function(err, user) {
+      data.users.addUser({username, accesstoken}, function(err, user) {
         return cb(null, user)
       })
     }) 

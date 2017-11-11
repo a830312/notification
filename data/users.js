@@ -1,4 +1,4 @@
-const moment = require('moment')
+import moment from 'moment'
 var records = []
 
 
@@ -38,12 +38,12 @@ const findByUsername = function(username, cb) {
   })
 }
 
-const addUser = function({username, accessToken}, cb) {
+const addUser = function({username, accesstoken}, cb) {
   process.nextTick(function() {
     let user = {
       id: records.length,
       username,
-      accessToken,
+      accessToken: accesstoken,
       creationTime: moment().format('YYYY-MM-DDTkk:mm:ss'),
       numOfNotificationsPushed: 0
     }
