@@ -6,10 +6,13 @@ import Head from '../components/head'
 import Form from '../components/form'
 import User from '../components/user'
 import Message from '../components/message'
+import Navigation from '../components/navigation'
 import pushesConfigs from '../config/pushes'
 import { initStore } from '../reducers'
 import { handleNotificationFormSubmit, handlePushesInputChange } from '../actions'
 import { bindActionCreators } from 'redux'
+import { get as _get } from 'lodash'
+import Link from 'next/link'
 
 
 
@@ -18,23 +21,31 @@ class Pushes extends React.Component {
   //   if (!_isFunction(req.isAuthenticated) || !req.isAuthenticated())
   //     res.redirect('/')
   // }
+  // static async getInitialProps({ req, res }) {
+  //   if (_get(req, 'user.username', ''))
+  //     res.redirect('/')
+  // }
 
   render() {
-    let { currentUser, message, hasSignup, ...others } = this.props
+    let { currentUser, message, hasSignup, title, formConfigs, notificationForm, ...others } = this.props,
+        { username } = currentUser
 
     return (
       <div>
-        <Head title="Notification - Push Notification" />
+        <Head title={`Notification - ${title}`} />
         <div className="container">
           <div className="col-sm-6 col-sm-offset-3">
 
-              <h1><span className="fa fa-sign-in"></span>Push Notification</h1>
+              <h1>{ title }</h1>
+              <Navigation />
 
-              <Message message={message} />
+              <Message message={message} /> 
 
-              <User user={currentUser} />
+              <User title="Current User" user={currentUser} />
+                    
 
-              <Form { ...pushesConfigs.form } {...others} />
+              { username ? <Form form={notificationForm} { ...formConfigs } {...others} /> : 
+                <p>Please <Link href="/" as="/"><a>signup</a></Link> first</p> }
 
           </div>
         </div>
@@ -44,14 +55,27 @@ class Pushes extends React.Component {
 }
 
 Pushes.propTypes = {
-  message: PropTypes.string
+  title: PropTypes.string,
+  message: PropTypes.string,
+  currentUser: PropTypes.object,
+  hasSignup: PropTypes.bool,
+  onInputChange: PropTypes.func,
+  onFormSubmit: PropTypes.func,
+  formConfigs: PropTypes.object,
+  notificationForm: PropTypes.object
 }
 
-const mapStateToProps = ({ message, hasSignup, currentUser }) => {
+Pushes.defaultProps = {
+  title: 'Push Notification',
+  formConfigs: pushesConfigs.form
+}
+
+const mapStateToProps = ({ message, hasSignup, currentUser, notificationForm }) => {
   return {
     message,
     hasSignup,
-    currentUser
+    currentUser,
+    notificationForm
   }
 }
 

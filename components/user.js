@@ -1,28 +1,40 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { get as _get } from 'lodash'
 
 
 export default class User extends Component {
   render() {
-    let { user } = this.props
+    let { user, title } = this.props,
+        { username } = user
 
-    return user.username ? (
-      <div>
-        <p>current user:</p>
-        <ul>
-          {
-            Object.keys(user).map((data, i) => <li key={`${data}-${i}`}>{`${data}: ${user[data]}`}</li>)
-          }
-        </ul>
+    return username ? (
+      <div className="card form-group">
+        <div className="card-body">
+          <div className="card-text">
+            { title ? <h4 className="card-title">{ title }</h4> : false }
+
+            {
+              Object.keys(user).map((data, i) => (
+                <div key={ `${data}-${i}` }>
+                  <dt>{ data }</dt>
+                  <dd>{ _get(user, data, '') }</dd>
+                </div>
+              ))
+            }
+          </div>
+        </div>
       </div>
     ) : false
   }
 }
 
 User.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  title: PropTypes.string
 }
 
 User.defaultProps = {
-  user: {}
+  user: {},
+  title: ''
 }

@@ -9,20 +9,38 @@ export default [
   {
     method: 'post',
     path: '/signup',
-    middleware: Passport.authenticate('local-signup'),
+    middleware: Passport.authenticate('local-signup', {
+      failureMessage: true,
+      successMessage: true
+    }),
     callback: (req, res) => {
-      let user = req.user || {}
-      // console.log('post /signup', req.isAuthenticated())
-      res.json({ user })
+
+      let { user } = req,
+          { username, accessToken, creationTime, numOfNotificationsPushed } = user
+
+      res.json({
+        username,
+        accessToken,
+        creationTime,
+        numOfNotificationsPushed
+      })
     }
   },
   {
     method: 'get',
-    path: '/users',
+    path: '/list-users',
     middleware: getUsers,
     callback: (req, res) => {
-      let users = req.users || []
-      res.json({ users })
+      let users = (req.users || []).map((user, i) => {
+        let { username, accessToken, creationTime, numOfNotificationsPushed } = user
+        return {
+          username,
+          accessToken,
+          creationTime,
+          numOfNotificationsPushed
+        }
+      })
+      res.json(users)
     }
   },
   {
@@ -38,7 +56,7 @@ export default [
       if (!accessToken) {
         res.status(status).json({
           error: {
-            message: 'no match user found',
+            message: 'Forbidden: no match user found',
             status: status
           }
         })
@@ -63,7 +81,13 @@ export default [
               })
             } else {
               data.users.updateUser(username, (error, updatedUser) => {
-                res.json({ user: updatedUser })
+                let { username, accessToken, creationTime, numOfNotificationsPushed } = updatedUser
+                res.json({
+                  username,
+                  accessToken,
+                  creationTime,
+                  numOfNotificationsPushed
+                })
               })
             }
           })

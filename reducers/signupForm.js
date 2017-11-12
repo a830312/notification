@@ -11,7 +11,8 @@ const signupForm = (state = initialState, action = {}) => {
   switch (type) {
     case actionTypes.SIGNUP_INPUT_CHANGE:
       return Object.assign({}, state, { [name]: value })
-    
+    case actionTypes.USER_REGISTERED_SUCCESS:
+      return initialState
     default:
       return state
   }

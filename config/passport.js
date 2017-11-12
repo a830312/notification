@@ -10,6 +10,7 @@ export default function (passport) {
 
   passport.deserializeUser(function(id, done) {
     data.users.findById(id, function(err, user) {
+      console.log('deserializeUser', err, user)
       done(err, user)
     })
   })
@@ -21,12 +22,15 @@ export default function (passport) {
   },
   function(username, accesstoken, cb) {
     data.users.findByUsername(username, function(err, user) {
-      //if (err) { return cb(err) }
+      console.log('local-signup', err, user)
+      if (err) {
+        return cb(err)
+      }
       if (user) {
-        return cb(null, false, { message: 'this username has already been taken.' })
+        return cb(null, user, { message: 'User Already Exists' })
       }
       data.users.addUser({username, accesstoken}, function(err, user) {
-        return cb(null, user)
+        return cb(null, user, { message: `${username} has been registered` })
       })
     }) 
   }))

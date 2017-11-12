@@ -10,9 +10,8 @@ const getUsers = function(cb) {
 
 const findById = function(id, cb) {
   process.nextTick(function() {
-    var idx = id - 1;
-    if (records[idx]) {
-      cb(null, records[idx]);
+    if (records[id]) {
+      cb(null, records[id]);
     } else {
       cb(new Error('User ' + id + ' does not exist'))
     }

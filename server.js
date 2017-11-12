@@ -6,6 +6,8 @@ import { parse } from 'url'
 import passportConfig from './config/passport'
 import getPageRoutes from './pageRoutes'
 import apiRoutes from './apiRoutes'
+import flash from 'connect-flash'
+import session from 'express-session'
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -16,9 +18,12 @@ const pageRoutes = getPageRoutes()
 app.prepare()
 .then(() => {
   const server = express()
-  server.use( BodyParser.urlencoded( { extended: false } ) )
-  server.use( BodyParser.json() )
-  server.use( Passport.initialize() )
+  server.use(BodyParser.urlencoded( { extended: false } ))
+  server.use(BodyParser.json())
+  server.use(session({ secret: 'secret', resave: false, saveUninitialized: false }))
+  server.use(Passport.initialize())
+  server.use(Passport.session())
+  server.use(flash())
 
   passportConfig(Passport)
   apiRoutes.forEach(({method, path, middleware, callback}) => {

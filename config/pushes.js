@@ -1,22 +1,22 @@
 export default {
   form: {
-    formName: 'pushes',
-    inputs: [
-      {
-        label: 'title',
+    formName: 'notification',
+    inputs: {
+      title: {
+        label: 'Notification Title',
         name: 'title',
         type: 'text'
       },
-      {
-        label: 'body',
+      body: {
+        label: 'Notification Body',
         name: 'body',
         type: 'text'
       },
-      {
+      type: {
         name: 'type',
         type: 'hidden'
       }
-    ],
+    },
     action: '/pushes',
     method: 'post',
     submit: 'Push'

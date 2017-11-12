@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { isFunction as _isFunction } from 'lodash'
+import { isFunction as _isFunction, get as _get } from 'lodash'
 
 
 export default class Form extends Component {
@@ -33,18 +33,21 @@ export default class Form extends Component {
   }
 
   render() {
-    let { formName, inputs, action, method, submit } = this.props
+    let { inputs, action, method, submit, form } = this.props
 
     return (
-      <form action={action} method={method} onSubmit={ this._onSubmit } name={formName} >
+      <form action={action} method={method} onSubmit={ this._onSubmit } >
         {
-          inputs.map((input, i) => (
-            <div className="form-group" key={`${input.name}-${i}`}>
-              { input.label ? <label>{ input.label }</label> : false }
-              <input type={ input.type } className="form-control" name={ input.name } 
-                onChange={this._onInputChange} />
-            </div>
-          ))
+          Object.keys(inputs).map((input, i) => {
+            let field = _get(inputs, input, {})
+            return (
+              <div className="form-group" key={`${field.name}-${input}`}>
+                { field.label ? <label>{ field.label }</label> : false }
+                <input type={ field.type } className="form-control" name={ field.name } 
+                  onChange={this._onInputChange} value={form[input]}/>
+              </div>
+            )
+          })
         }
 
         <button type="submit" className="btn btn-warning btn-lg">{ submit }</button>
@@ -54,7 +57,7 @@ export default class Form extends Component {
 }
 
 Form.propTypes = {
-  inputs: PropTypes.array,
+  inputs: PropTypes.object,
   action: PropTypes.string,
   method: PropTypes.string,
   submit: PropTypes.string,
