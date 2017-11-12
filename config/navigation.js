@@ -1,7 +1,7 @@
 export default [
   {
     link: '/',
-    text: 'Signup'
+    text: 'Register'
   },
   {
     link: '/pushes',

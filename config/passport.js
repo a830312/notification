@@ -10,7 +10,6 @@ export default function (passport) {
 
   passport.deserializeUser(function(id, done) {
     data.users.findById(id, function(err, user) {
-      console.log('deserializeUser', err, user)
       done(err, user)
     })
   })
@@ -22,7 +21,6 @@ export default function (passport) {
   },
   function(username, accesstoken, cb) {
     data.users.findByUsername(username, function(err, user) {
-      console.log('local-signup', err, user)
       if (err) {
         return cb(err)
       }

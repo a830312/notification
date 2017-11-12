@@ -24,7 +24,7 @@ class Users extends Component {
       <div>
         <Head title={`Notification - ${title}`} />
         <div className="container">
-          <div className="col-sm-6 col-sm-offset-3">
+          <div className="col-sm-6 col-sm-offset-3 mx-auto">
 
               <h1>{ title }</h1>
               <Navigation />

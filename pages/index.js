@@ -24,7 +24,7 @@ class Signup extends Component {
       <div>
         <Head title={`Notification - ${title}`} />
         <div className="container">
-          <div className="col-sm-6 col-sm-offset-3">
+          <div className="col-sm-6 col-sm-offset-3 mx-auto">
 
               <h1>{ title }</h1>
               <Navigation />
@@ -51,7 +51,7 @@ Signup.propTypes = {
 
 Signup.defaultProps = {
   formConfigs: signupconfigs.form,
-  title: 'Signup'
+  title: 'Register'
 }
 
 const mapStateToProps = ({ message, hasSignup, currentUser, signupForm }) => {

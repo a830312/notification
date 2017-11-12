@@ -17,14 +17,6 @@ import Link from 'next/link'
 
 
 class Pushes extends React.Component {
-  // static async getInitialProps({ req, res }) {
-  //   if (!_isFunction(req.isAuthenticated) || !req.isAuthenticated())
-  //     res.redirect('/')
-  // }
-  // static async getInitialProps({ req, res }) {
-  //   if (_get(req, 'user.username', ''))
-  //     res.redirect('/')
-  // }
 
   render() {
     let { currentUser, message, hasSignup, title, formConfigs, notificationForm, ...others } = this.props,
@@ -34,7 +26,7 @@ class Pushes extends React.Component {
       <div>
         <Head title={`Notification - ${title}`} />
         <div className="container">
-          <div className="col-sm-6 col-sm-offset-3">
+          <div className="col-sm-6 col-sm-offset-3 mx-auto">
 
               <h1>{ title }</h1>
               <Navigation />
