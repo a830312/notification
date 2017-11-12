@@ -10,16 +10,20 @@ npm run dev
 ```
 
 ## apis
-config/api.js
+[config/api.js](https://github.com/a830312/notification/blob/master/config/api.js)
 
-* Retrieve a list of all registered users
+### Retrieve a list of all registered users
 
+`HTTP`
 ```
 GET /list-users HTTP/1.1
 Host: localhost:3000
 Content-Type: application/json
 Cache-Control: no-cache
+```
 
+`cURL`
+```
 curl -X GET \
   http://localhost:3000/list-users \
   -H 'cache-control: no-cache' \
@@ -39,8 +43,9 @@ curl -X GET \
 ]
 ```
 
-* Signup
+### Signup
 
+`HTTP`
 ```
 POST /signup HTTP/1.1
 Host: localhost:3000
@@ -52,7 +57,10 @@ Cache-Control: no-cache
     "username": "bbcUser2",
     "accesstoken": "o.fq6zRoK99CCKOlQ4fRWaqEN9LpKdtJBS"
 }
+```
 
+`cURL`
+```
 curl -X POST \
   http://localhost:3000/signup \
   -H 'accept: */*' \
@@ -66,7 +74,6 @@ curl -X POST \
 ```
 
 `Response`
-
 ```
 {
     "username": "bbcUser2",
@@ -76,8 +83,9 @@ curl -X POST \
 }
 ```
 
-* Login
+### Login
 
+`HTTP`
 ```
 POST /login HTTP/1.1
 Host: localhost:3000
@@ -88,7 +96,10 @@ Cache-Control: no-cache
     "username": "bbcUser2",
     "accesstoken": "o.fq6zRoK99CCKOlQ4fRWaqEN9LpKdtJBS"
 }
+```
 
+`cURL`
+```
 curl -X POST \
   http://localhost:3000/login \
   -H 'cache-control: no-cache' \
@@ -102,7 +113,6 @@ curl -X POST \
 ```
 
 `Response`
-
 ```
 {
     "username": "bbcUser2",
@@ -111,8 +121,8 @@ curl -X POST \
     "numOfNotificationsPushed": 0
 }
 ```
-* Logout
 
+### Logout
 ```
 GET /logout HTTP/1.1
 Host: localhost:3000
@@ -124,8 +134,9 @@ curl -X GET \
 
 ```
 
-* Send a notification to current user and also increment that user’s `numOfNotificationsPushed` by 1
+### Send a notification to current user and also increment that user’s 'numOfNotificationsPushed' by 1
 
+`HTTP`
 ```
 POST /pushes HTTP/1.1
 Host: localhost:3000
@@ -136,7 +147,10 @@ Postman-Token: a73e40b7-353a-bac7-9c4e-1802c1fa6c42
 {
 	"username": "bbcUser1"
 }
+```
 
+`cURL`
+```
 curl -X POST \
   http://localhost:3000/pushes \
   -H 'cache-control: no-cache' \
@@ -148,7 +162,6 @@ curl -X POST \
 ```
 
 `Response`
-
 ```
 {
     "username": "bbcUser2",
