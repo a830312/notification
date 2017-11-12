@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import { actionTypes } from '../actions'
-import hasSignup from './hasSignup'
 import message from './message'
 import currentUser from './currentUser'
 import signupForm from './signupForm'
@@ -11,7 +10,6 @@ import thunkMiddleware from 'redux-thunk'
 
 
 const reducer = combineReducers({
-  hasSignup,
   message,
   currentUser,
   signupForm,

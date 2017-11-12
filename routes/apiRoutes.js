@@ -4,8 +4,10 @@ import getUser from '../middlewares/getUser'
 import handleListUser from './handlers/handleListUser'
 import handleSignupUser from './handlers/handleSignupUser'
 import handlePushAndUpdateUser from './handlers/handlePushAndUpdateUser'
-import { extraceUserData } from '../lib'
+import handleLoginUser from './handlers/handleLoginUser'
+import handleLogoutUser from './handlers/handleLogoutUser'
 
+const defaultMiddleware = (req, res, next) => { next() }
 
 export default [
   {
@@ -28,5 +30,20 @@ export default [
     path: '/pushes',
     middleware: getUser,
     callback: handlePushAndUpdateUser
+  },
+  {
+    method: 'post',
+    path: '/login',
+    middleware: Passport.authenticate('login', {
+      failureMessage: true,
+      successMessage: true
+    }),
+    callback: handleLoginUser
+  },
+  {
+    method: 'get',
+    path: '/logout',
+    middleware: defaultMiddleware,
+    callback: handleLogoutUser
   }
 ]

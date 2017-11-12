@@ -5,9 +5,10 @@ const initialState = {}
 const currentUser = (state = initialState, action = {}) => {
   let { type, user } = action
   switch (type) {
-    case actionTypes.USER_REGISTERED_SUCCESS:
+    case actionTypes.USER_LOGIN_SUCCESS:
     case actionTypes.PUSH_USER_SUCCESS:
-      return user
+    case actionTypes.USER_REGISTERED_SUCCESS:
+      return user || state
     default:
       return state
   }

@@ -1,7 +1,11 @@
 export default [
   {
     link: '/',
-    text: 'Register'
+    text: 'Register/Login'
+  },
+  {
+    link: '/logout',
+    text: 'Logout'
   },
   {
     link: '/pushes',

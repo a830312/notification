@@ -3,6 +3,6 @@ module.exports = () => {
     '/': { page: '/' },
     '/404': { page: '/404' },
     '/signup': { page: '/signup' },
-    '/pushes': { page: '/pushes'}
+    '/pushes': { page: '/pushes' }
   }
 }

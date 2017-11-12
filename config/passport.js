@@ -32,4 +32,23 @@ export default function (passport) {
       })
     }) 
   }))
+
+  passport.use('login', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'accesstoken'
+  },
+  function (username, accesstoken, done) {
+    data.users.findByUsername( username, function (err, user) {
+      if (err) {
+        return done(err)
+      }
+      if (!user) {
+        return done(null, false, { message: 'Please Register first' })
+      }
+      if (accesstoken !== accesstoken) {
+        return done(null, false, { message: 'wrong username or accesstoken' })
+      }
+      return done(null, user)
+    })
+  }))
 }

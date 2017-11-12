@@ -1,8 +1,9 @@
 import request from 'superagent'
 import { get as _get } from 'lodash'
+import * as apis from '../config/api'
+
 
 export const actionTypes = {
-  SIGNUP: 'SIGNUP',
   SIGNUP_INPUT_CHANGE: 'SIGNUP_INPUT_CHANGE',
   NOTIFICATION_INPUT_CHANGE: 'NOTIFICATION_INPUT_CHANGE',
   UPDATE_MESSAGE: 'UPDATE_MESSAGE',
@@ -11,17 +12,32 @@ export const actionTypes = {
   PUSH_USER_SUCCESS: 'PUSH_USER_SUCCESS',
   PUSH_USER_ERROR: 'PUSH_USER_ERROR',
   LIST_USERS_SUCCESS: 'LIST_USERS_SUCCESS',
-  LIST_USERS_ERROR: 'LIST_USERS_ERROR'
+  LIST_USERS_ERROR: 'LIST_USERS_ERROR',
+  USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS'
 }
 
+export const login = () => (dispatch, getState) => {
+  let storeState = getState(),
+      { currentUser } = storeState,
+      { username, accessToken } = currentUser,
+      accesstoken = accessToken
+  
+  return request.post(apis.LOGIN_API)
+          .send({ username, accesstoken })
+          .set('Content-Type', 'application/json')
+          .then((success, failure) => {
+            let user = _get(success, 'body')
+            dispatch(loginSuccessAndUpdateUser(user))
+          })
+}
 
-export const signup = (username, accesstoken) => dispatch => {
+export const loginSuccessAndUpdateUser = (user) => (dispatch) => {
   return dispatch({
-    type: actionTypes.SIGNUP,
-    username: username,
-    accesstoken: accesstoken
+    type: actionTypes.USER_LOGIN_SUCCESS,
+    user: user
   })
 }
+
 
 export const handleSignupInputChange = ({name, value}) => dispatch => {
   return dispatch({
@@ -41,13 +57,13 @@ export const handlePushesInputChange = ({name, value}) => dispatch => {
 
 const sendSignupRequest = ({ username, accesstoken }) => (dispatch) => {
   return request
-    .post('/signup')
+    .post(apis.SIGNUP_API)
     .send({ username, accesstoken })
     .set('Content-Type', 'application/json')
     
 }
 
-const updateMessage = (message) => dispatch => {
+export const updateMessage = (message) => dispatch => {
   return dispatch({
     type: actionTypes.UPDATE_MESSAGE,
     message
@@ -56,7 +72,7 @@ const updateMessage = (message) => dispatch => {
 
 export const handleSignupFormSubmit = () => (dispatch, getState) => {
   let storeState = getState(),
-      signupForm = storeState.signupForm,
+      signupForm = _get(storeState, 'signupForm', {}),
       { username, accesstoken } = signupForm
 
   if (!username || !accesstoken)
@@ -76,16 +92,17 @@ export const handleSignupFormSubmit = () => (dispatch, getState) => {
               })
                       
 
-            return dispatch({
-              type: actionTypes.USER_REGISTERED_SUCCESS,
-              user: _get(success, 'body', {})
-            })
+            return Promise.resolve(dispatch({
+                    type: actionTypes.USER_REGISTERED_SUCCESS,
+                    user: _get(success, 'body', {})
+                  }))
+                    .then(dispatch(login()))
           })
 }
 
 const pushNotification = ({ title, body, type, username }) => (dispatch) => {
   return request
-    .post('/pushes')
+    .post(apis.PUSHES_API)
     .send({ title, body, type, username })
     .set('Content-Type', 'application/json')
     
@@ -120,7 +137,7 @@ export const handleNotificationFormSubmit = () => (dispatch, getState) => {
 }
 
 const sendGetUserListRequest = () => (dispatch) => {
-  return request.get('http://localhost:3000/list-users')
+  return request.get(apis.LIST_USERS_API)
 }
 
 export const getUserList = () => (dispatch) => {

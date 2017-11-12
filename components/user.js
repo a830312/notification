@@ -6,7 +6,7 @@ import { get as _get } from 'lodash'
 export default class User extends Component {
   render() {
     let { user, title } = this.props,
-        { username } = user
+        username = _get(user, 'username')
 
     return username ? (
       <div className="card form-group">
