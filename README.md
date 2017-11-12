@@ -10,10 +10,10 @@ npm run dev
 ```
 
 ## pages
-
-* `/` - signup or login
-* `/pushes` - send notification to current user
-* `/users` - list all registered users
+[pages/](https://github.com/a830312/notification/tree/master/pages)
+* [/](https://github.com/a830312/notification/blob/master/pages/index.js) - signup or login
+* [/pushes](https://github.com/a830312/notification/blob/master/pages/pushes.js) - send notification to current user
+* [/users](https://github.com/a830312/notification/blob/master/pages/users.js) - list all registered users
 
 ## apis
 [config/api.js](https://github.com/a830312/notification/blob/master/config/api.js)
