@@ -9,6 +9,12 @@ npm install
 npm run dev
 ```
 
+## pages
+
+* `/` - signup or login
+* `/pushes` - send notification to current user
+* `/users` - list all registered users
+
 ## apis
 [config/api.js](https://github.com/a830312/notification/blob/master/config/api.js)
 
