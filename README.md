@@ -17,6 +17,11 @@ npm run dev
 
 ## apis
 [config/api.js](https://github.com/a830312/notification/blob/master/config/api.js)
+* [Retrieve a list of all registered users](https://github.com/a830312/notification/blob/master/README.md#list-users)
+* [Signup](https://github.com/a830312/notification/blob/master/README.md#signup)
+* [Login](https://github.com/a830312/notification/blob/master/README.md#login)
+* [Logout](https://github.com/a830312/notification/blob/master/README.md#logout)
+* [Push and update user](https://github.com/a830312/notification/blob/master/README.md#send-a-notification-to-current-user-and-also-increment-that-users-numofnotificationspushed-by-1)
 
 ### Retrieve a list of all registered users
 
