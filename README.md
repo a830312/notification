@@ -47,6 +47,14 @@ npm run dev
 * [Push and update user](https://github.com/a830312/notification/blob/master/README.md#send-a-notification-to-current-user-and-also-increment-that-users-numofnotificationspushed-by-1)
 
 testing data example:
+Preparation
+Visit https://www.pushbullet.com/
+* Sign up
+* Go to Devices
+	* Install Pushbullet to a device of your choice (be it a phone or a web browser)
+* Go to Settings, Account
+	* Select Create Access Token
+	* Store the generated access token somewhere safe
 ```
 {
 	"username": "bbcUser1",
