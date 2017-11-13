@@ -41,7 +41,7 @@ curl -X GET \
   -H 'content-type: application/json'
 ```
 
-`Response`
+`Response` with `status 200`
 
 ```
 [
@@ -53,6 +53,7 @@ curl -X GET \
     }
 ]
 ```
+
 
 ### Signup
 
@@ -84,7 +85,7 @@ curl -X POST \
 
 ```
 
-`Response`
+`Response` with `status 200`
 ```
 {
     "username": "bbcUser2",
@@ -93,6 +94,13 @@ curl -X POST \
     "numOfNotificationsPushed": 0
 }
 ```
+
+`Response` with `status 400`
+
+```
+Bad Request
+```
+
 
 ### Login
 
@@ -123,7 +131,7 @@ curl -X POST \
 
 ```
 
-`Response`
+`Response` with `status 400`
 ```
 {
     "username": "bbcUser2",
@@ -132,6 +140,13 @@ curl -X POST \
     "numOfNotificationsPushed": 0
 }
 ```
+
+`Response` with `status 400`
+
+```
+Unauthorize
+```
+
 
 ### Logout
 ```
@@ -172,12 +187,22 @@ curl -X POST \
 
 ```
 
-`Response`
+`Response` with `status 200`
 ```
 {
     "username": "bbcUser2",
     "accessToken": "o.fq6zRoK99CCKOlQ4fRWaqEN9LpKdtJBS",
     "creationTime": "2017-11-12T19:30:01",
     "numOfNotificationsPushed": 1
+}
+```
+
+`Response` with `status 403`
+```
+{
+    "error": {
+        "message": "Forbidden: no match user found",
+        "status": 403
+    }
 }
 ```
