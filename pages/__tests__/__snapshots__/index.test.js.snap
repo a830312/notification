@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup should hide the form after login 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="col-sm-6 col-sm-offset-3 mx-auto"
+    >
+      <h1>
+        Register
+      </h1>
+      <p>
+        <a
+          className="card-link"
+          href="/"
+          onClick={[Function]}
+        >
+          Register/Login
+        </a>
+        <a
+          className="card-link"
+          href="/logout"
+          onClick={[Function]}
+        >
+          Logout
+        </a>
+        <a
+          className="card-link"
+          href="/pushes"
+          onClick={[Function]}
+        >
+          Push Notification
+        </a>
+        <a
+          className="card-link"
+          href="/users"
+          onClick={[Function]}
+        >
+          List users
+        </a>
+      </p>
+      <div
+        className="card form-group"
+      >
+        <div
+          className="card-body"
+        >
+          <div
+            className="card-text"
+          >
+            <h4
+              className="card-title"
+            >
+              Current User
+            </h4>
+            <div>
+              <dt>
+                username
+              </dt>
+              <dd>
+                abc
+              </dd>
+            </div>
+            <div>
+              <dt>
+                accessToken
+              </dt>
+              <dd>
+                123
+              </dd>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Signup should render with correct title 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="col-sm-6 col-sm-offset-3 mx-auto"
+    >
+      <h1>
+        Register
+      </h1>
+      <p>
+        <a
+          className="card-link"
+          href="/"
+          onClick={[Function]}
+        >
+          Register/Login
+        </a>
+        <a
+          className="card-link"
+          href="/logout"
+          onClick={[Function]}
+        >
+          Logout
+        </a>
+        <a
+          className="card-link"
+          href="/pushes"
+          onClick={[Function]}
+        >
+          Push Notification
+        </a>
+        <a
+          className="card-link"
+          href="/users"
+          onClick={[Function]}
+        >
+          List users
+        </a>
+      </p>
+      <form
+        action="/signup"
+        method="post"
+        onSubmit={[Function]}
+      >
+        <div
+          className="form-group"
+        >
+          <label>
+            username
+          </label>
+          <input
+            className="form-control"
+            name="username"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="form-group"
+        >
+          <label>
+            accesstoken
+          </label>
+          <input
+            className="form-control"
+            name="accesstoken"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          className="btn btn-warning btn-lg"
+          type="submit"
+        >
+          submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Signup should render with login / registeration form 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="col-sm-6 col-sm-offset-3 mx-auto"
+    >
+      <h1>
+        Register
+      </h1>
+      <p>
+        <a
+          className="card-link"
+          href="/"
+          onClick={[Function]}
+        >
+          Register/Login
+        </a>
+        <a
+          className="card-link"
+          href="/logout"
+          onClick={[Function]}
+        >
+          Logout
+        </a>
+        <a
+          className="card-link"
+          href="/pushes"
+          onClick={[Function]}
+        >
+          Push Notification
+        </a>
+        <a
+          className="card-link"
+          href="/users"
+          onClick={[Function]}
+        >
+          List users
+        </a>
+      </p>
+      <form
+        action="/signup"
+        method="post"
+        onSubmit={[Function]}
+      >
+        <div
+          className="form-group"
+        >
+          <label>
+            username
+          </label>
+          <input
+            className="form-control"
+            name="username"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="form-group"
+        >
+          <label>
+            accesstoken
+          </label>
+          <input
+            className="form-control"
+            name="accesstoken"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          className="btn btn-warning btn-lg"
+          type="submit"
+        >
+          submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;

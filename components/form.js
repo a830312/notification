@@ -33,18 +33,19 @@ export default class Form extends Component {
   }
 
   render() {
-    let { inputs, action, method, submit, form } = this.props
+    let { inputs, action, method, submit, form } = this.props,
+        inputsArry = Object.keys(inputs || {}) || []
 
     return (
       <form action={action} method={method} onSubmit={ this._onSubmit } >
         {
-          Object.keys(inputs).map((input, i) => {
+          inputsArry.map((input, i) => {
             let field = _get(inputs, input, {})
             return (
               <div className="form-group" key={`${field.name}-${input}`}>
                 { field.label ? <label>{ field.label }</label> : false }
                 <input type={ field.type } className="form-control" name={ field.name } 
-                  onChange={this._onInputChange} value={form[input]}/>
+                  onChange={this._onInputChange} value={ _get(form, input, '') }/>
               </div>
             )
           })
@@ -70,5 +71,7 @@ Form.defaultProps = {
   inputs: [],
   action: '/signup',
   method: 'post',
-  submit: 'submit'
+  submit: 'submit',
+  onFormSubmit: () => {},
+  onInputChange: () => {}
 }

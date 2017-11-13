@@ -24,9 +24,11 @@ export default function (passport) {
       if (err) {
         return cb(err)
       }
-      if (user) {
+
+      if (user && accesstoken === user.accessToken) {
         return cb(null, user, { message: 'User Already Exists' })
       }
+
       data.users.addUser({username, accesstoken}, function(err, user) {
         return cb(null, user, { message: `${username} has been registered` })
       })
@@ -45,7 +47,7 @@ export default function (passport) {
       if (!user) {
         return done(null, false, { message: 'Please Register first' })
       }
-      if (accesstoken !== accesstoken) {
+      if (accesstoken !== user.accessToken) {
         return done(null, false, { message: 'wrong username or accesstoken' })
       }
       return done(null, user)

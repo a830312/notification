@@ -1,3 +1,17 @@
 {
-  "presets": ["es2015", "next/babel"]
+  "env": {
+    "development": {
+      "presets": ["es2015", "next/babel"]
+    },
+    "production": {
+      "presets": ["es2015", "next/babel"]
+    },
+    "test": {
+      "presets": [
+        ["env", { "modules": "commonjs" }],
+        "es2015",
+        "next/babel"
+      ]
+    }
+  }
 }

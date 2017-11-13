@@ -31,8 +31,8 @@ class Users extends Component {
               <Message message={ message } />
 
               {
-                users.length ? (
-                  (users || []).map((user, i) => 
+                (users || []).length ? (
+                  users.map((user, i) => 
                     <User user={user} key={`user-list-${i}`} />
                   )
                 ) : <p>No users registered yet</p>

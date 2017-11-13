@@ -8,7 +8,7 @@ const currentUser = (state = initialState, action = {}) => {
     case actionTypes.USER_LOGIN_SUCCESS:
     case actionTypes.PUSH_USER_SUCCESS:
     case actionTypes.USER_REGISTERED_SUCCESS:
-      return user || state
+      return user
     default:
       return state
   }

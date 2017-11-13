@@ -18,7 +18,7 @@ import { get as _get } from 'lodash'
 class Signup extends Component {
   static getInitialProps ({ req, store, isServer }) {
     let user = _get(req, 'user', {}),
-        { username } = user
+        username = _get(user, 'username')
 
     if (username) {
       store.dispatch(loginSuccessAndUpdateUser(user))

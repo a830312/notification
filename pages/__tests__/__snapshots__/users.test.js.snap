@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Users Component should list users 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="col-sm-6 col-sm-offset-3 mx-auto"
+    >
+      <h1>
+        List users
+      </h1>
+      <p>
+        <a
+          className="card-link"
+          href="/"
+          onClick={[Function]}
+        >
+          Register/Login
+        </a>
+        <a
+          className="card-link"
+          href="/logout"
+          onClick={[Function]}
+        >
+          Logout
+        </a>
+        <a
+          className="card-link"
+          href="/pushes"
+          onClick={[Function]}
+        >
+          Push Notification
+        </a>
+        <a
+          className="card-link"
+          href="/users"
+          onClick={[Function]}
+        >
+          List users
+        </a>
+      </p>
+      <div
+        className="card form-group"
+      >
+        <div
+          className="card-body"
+        >
+          <div
+            className="card-text"
+          >
+            <div>
+              <dt>
+                username
+              </dt>
+              <dd>
+                foo
+              </dd>
+            </div>
+            <div>
+              <dt>
+                accessToken
+              </dt>
+              <dd>
+                123
+              </dd>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="card form-group"
+      >
+        <div
+          className="card-body"
+        >
+          <div
+            className="card-text"
+          >
+            <div>
+              <dt>
+                username
+              </dt>
+              <dd>
+                bar
+              </dd>
+            </div>
+            <div>
+              <dt>
+                accessToken
+              </dt>
+              <dd>
+                456
+              </dd>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Users Component should render hint if no user registered yet 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="col-sm-6 col-sm-offset-3 mx-auto"
+    >
+      <h1>
+        List users
+      </h1>
+      <p>
+        <a
+          className="card-link"
+          href="/"
+          onClick={[Function]}
+        >
+          Register/Login
+        </a>
+        <a
+          className="card-link"
+          href="/logout"
+          onClick={[Function]}
+        >
+          Logout
+        </a>
+        <a
+          className="card-link"
+          href="/pushes"
+          onClick={[Function]}
+        >
+          Push Notification
+        </a>
+        <a
+          className="card-link"
+          href="/users"
+          onClick={[Function]}
+        >
+          List users
+        </a>
+      </p>
+      <p>
+        No users registered yet
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Users Component should render with correct title 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="col-sm-6 col-sm-offset-3 mx-auto"
+    >
+      <h1>
+        List users
+      </h1>
+      <p>
+        <a
+          className="card-link"
+          href="/"
+          onClick={[Function]}
+        >
+          Register/Login
+        </a>
+        <a
+          className="card-link"
+          href="/logout"
+          onClick={[Function]}
+        >
+          Logout
+        </a>
+        <a
+          className="card-link"
+          href="/pushes"
+          onClick={[Function]}
+        >
+          Push Notification
+        </a>
+        <a
+          className="card-link"
+          href="/users"
+          onClick={[Function]}
+        >
+          List users
+        </a>
+      </p>
+      <p>
+        No users registered yet
+      </p>
+    </div>
+  </div>
+</div>
+`;

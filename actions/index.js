@@ -26,8 +26,11 @@ export const login = () => (dispatch, getState) => {
           .send({ username, accesstoken })
           .set('Content-Type', 'application/json')
           .then((success, failure) => {
+            if (failure)
+              return dispatch(updateMessage(failure))
+
             let user = _get(success, 'body')
-            dispatch(loginSuccessAndUpdateUser(user))
+            return dispatch(loginSuccessAndUpdateUser(user))
           })
 }
 
