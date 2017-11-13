@@ -1,21 +1,44 @@
 # Notification
 
+
+## Features
+* Universal rendering, with async data support with [nextjs](https://zeit.co/blog/next4)
+* pages and APIs hosted Express server
+* Signup / Login / Logout / [Push Notification](https://docs.pushbullet.com/#create-push) support
+* Unit test with Jest / snapshots for [pages](https://github.com/a830312/notification/tree/master/pages/__tests__) and [data](https://github.com/a830312/notification/tree/master/data/__tests__)
+
+
+
 ## How to use
 
 Install it and run:
 
+
+`git clone git@github.com:a830312/notification.git`
+
 ```bash
+
 npm install
+
 npm run dev
+
 ```
 
-## pages
+## Stacks
+* nextjs
+* react
+* redux
+* Babel@6
+* npm as package manager
+
+
+## Pages
 [pages/](https://github.com/a830312/notification/tree/master/pages)
 * [/](https://github.com/a830312/notification/blob/master/pages/index.js) - signup or login
 * [/pushes](https://github.com/a830312/notification/blob/master/pages/pushes.js) - send notification to current user
 * [/users](https://github.com/a830312/notification/blob/master/pages/users.js) - list all registered users
 
-## apis
+## APIs
 [config/api.js](https://github.com/a830312/notification/blob/master/config/api.js)
 * [Retrieve a list of all registered users](https://github.com/a830312/notification/blob/master/README.md#list-users)
 * [Signup](https://github.com/a830312/notification/blob/master/README.md#signup)
@@ -206,3 +229,14 @@ curl -X POST \
     }
 }
 ```
+
+## Unit test
+
+`npm run test`
+
+
+## Deploy to Heroku
+
+Set `HOST` to heroku config var. (without trailing slash e.g.: https://test-app.herokuapp.com)
+
+
