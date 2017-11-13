@@ -46,6 +46,14 @@ npm run dev
 * [Logout](https://github.com/a830312/notification/blob/master/README.md#logout)
 * [Push and update user](https://github.com/a830312/notification/blob/master/README.md#send-a-notification-to-current-user-and-also-increment-that-users-numofnotificationspushed-by-1)
 
+testing data example:
+```
+{
+	"username": "bbcUser1",
+	"accesstoken": "o.fq6zRoK99CCKOlQ4fRWaqEN9LpKdtJBS"
+}
+```
+
 ### Retrieve a list of all registered users
 
 `HTTP`
